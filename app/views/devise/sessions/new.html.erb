@@ -7,8 +7,8 @@
     <div class="">
       <%= f.submit "Next", class: 'w-100 p-3 btn btn-primary rounded-0 text-white' %>
     </div>
-</div>
-
+  </div>
+  <%= render "shared/messages"%>
   <div class="w-100">
     <%= f.email_field :email, placeholder: 'Email', autofocus: true, autocomplete: "email", class: 'w-100 p-3' %>
     <%= f.password_field :password, placeholder: 'Password', autocomplete: "current-password", class: 'w-100 p-3' %>

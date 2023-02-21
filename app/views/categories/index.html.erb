@@ -1,1 +1,11 @@
-<h1>Category</h1>
+<%= render "shared/nav_bar"%>
+<%= render "shared/messages"%>
+<% @categories.each do |item|%>
+  <div class="row align-items-center m-1">
+    <%= image_tag(item.icon_url, class: 'img-fluid col-4')%>
+    <p class= "col-4 text-center"><%= item.name%></p>
+    <p class= "col-4 text-center">Total</p>
+  </div>
+<%end%>
+
+<%= link_to ' Add category', new_category_path, class:'my-3 btn btn-primary w-100 rounded-0' %>

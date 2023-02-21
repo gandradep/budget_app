@@ -1,0 +1,8 @@
+<div class="d-flex bg-primary align-items-center justify-content-between w-100 p-3">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-arrow-left text-white"></i>
+    <%end %>
+
+    <h2 class="text-white ms-4"><%= params[:controller]%></h2>
+    <%= button_to "Log out", destroy_user_session_path, class: "btn btn-primary", method: :delete, data: { turbo: false } %>
+  </div>
