@@ -1,29 +1,35 @@
-<h2>Sign up</h2>
+<div class="d-flex flex-column vh-100 align-items-center gap-5">
+<div class="d-flex bg-primary align-items-center w-100 p-3">
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left text-white"></i>
+  <%end %>
+  <h2 class="text-white ms-4">Register</h2>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+<%= form_for(resource, html: {class: "w-100"}, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="">
+      <%= f.text_field :name, autofocus: true, placeholder: "Full name", class: 'w-100 p-3' %>
+    </div>
+
+  <div class="">
+
+    <%= f.email_field :email, placeholder: "Email",  autocomplete: "email", class: 'w-100 p-3' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="">
+    <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password", class: 'w-100 p-3' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div>
+    <%= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "new-password", class: 'w-100 p-3' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="">
+    <%= f.submit "Sign up", class: 'w-100 p-3 btn btn-primary rounded-0 text-white' %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</div>
