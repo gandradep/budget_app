@@ -4,8 +4,8 @@
   <%= link_to category_path(item), class: 'text-decoration-none' do%>
     <div class="row align-items-center m-1 p-1 border border-secondary">
       <%= image_tag(item.icon_url, class: 'img-fluid col-4')%>
-      <p class= "col-4 text-center text-dark"><%= item.name%></p>
-      <p class= "col-4 text-center text-dark">Total</p>
+      <p class= "col-4 text-center text-dark fs-5"><%= item.name%></p>
+      <p class= "col-4 text-center text-dark fs-5"><%=number_to_currency(item.transacctions.sum(:amount))%></p>
     </div>
   <%end%>
 <%end%>

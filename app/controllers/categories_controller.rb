@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    p @category
+    @transacctions = @category.transacctions
   end
 
   # GET /foods/new

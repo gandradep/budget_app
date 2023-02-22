@@ -2,7 +2,10 @@
     <%= link_to :back do %>
       <i class="fa-solid fa-arrow-left text-white"></i>
     <%end %>
-
+    <% if params[:controller] == 'transacctions'%>
+      <h2 class="text-white ms-4">transaction</h2>
+    <% else%>
     <h2 class="text-white ms-4"><%= params[:controller]%></h2>
+    <%end%>
     <%= button_to "Log out", destroy_user_session_path, class: "btn btn-primary", method: :delete, data: { turbo: false } %>
   </div>

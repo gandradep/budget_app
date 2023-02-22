@@ -1,16 +1,20 @@
 class TransacctionsController < ApplicationController
   before_action :set_transaction, only: %i[show edit update destroy]
-   # GET /foods/new
+   # GET /transacction/new
   def new
-    @transaction = Transacction.new
+    @transacction = Transacction.new
+
     @category = Category.find(params[:category_id])
   end
 
-  # POST /foods or /foods.json
+  # POST /transacction or /transacction.json
   def create
     @author = current_user
-    @transaction = Transacction.new(transaction_params)
+    @transaction = Transacction.new(transacction_params)
     @transaction.author = @author
+    @transaction.category_ids = params[:transacction][:category_ids]
+
+
 
     respond_to do |format|
       if @transaction.save
@@ -36,12 +40,12 @@ class TransacctionsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_category
+  def set_transacction
     @transaction = Transacction.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
-  def category_params
-    params.require(:transaction).permit(:name, :amount, :user_id)
+  def transacction_params
+    params.require(:transacction).permit(:name, :amount, :category_ids, :user_id)
   end
 end

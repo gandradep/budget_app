@@ -1,0 +1,31 @@
+<%= render "shared/nav_bar"%>
+<%= render "shared/messages"%>
+<div class="ms-4 mt-2 w-50">
+<h2>Add a transaction</h2>
+<%= form_with model: @transacction, url: category_transacctions_path do |f|%>
+  <div class="mt-3">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="mt-3" >
+    <%= f.label :amount, class: 'form-label' %>
+    <%= f.text_field :amount, class: 'form-control' %>
+  </div>
+  <div class="mt-3" >
+    <% Category.where(author_id: current_user.id).each do |item|%>
+    <%p params[:category_id].to_i%>
+      <% if item.id == params[:category_id].to_i%>
+        <%= check_box_tag "transacction[category_ids][]", item.id, true%>
+      <%else%>
+        <%= check_box_tag "transacction[category_ids][]", item.id%>
+      <%end%>
+      <%= item.name%><br>
+    <%end%>
+  </div>
+
+  <%= f.submit "Save", class: 'mt-2' %>
+<%end%>
+<% if flash[:error] %>
+    <div><%= flash[:error] %></div>
+<% end %>
+</div>

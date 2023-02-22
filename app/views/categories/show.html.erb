@@ -1,4 +1,18 @@
 <%= render "shared/nav_bar"%>
 <%= render "shared/messages"%>
+<div class="d-flex justify-content-between m-1 p-1">
+  <p class= "fs-5"><%=@category.name%> category expenses:</p>
+  <p class= "fs-5"><%= number_to_currency(@transacctions.sum(:amount))%></p>
+</div>
 
-<%= link_to ' Add transaction', new_category_transaction_path(@category), class:'my-3 btn btn-primary w-100 rounded-0' %>
+<% @transacctions.each do |item|%>
+    <div class="d-flex justify-content-between m-1 p-2 border border-secondary">
+      <div>
+        <p class= "text-dark fs-5 m-0"><%= item.name%></p>
+        <p class= "text-dark fs-6"><%= item.created_at.strftime("%d %b %y")%></p>
+      </div>
+      <p class= "text-center text-dark fs-5"><%= number_to_currency(item.amount)%></p>
+    </div>
+<%end%>
+
+<%= link_to ' Add transaction', new_category_transacction_path(@category), class:'my-3 btn btn-primary w-100 rounded-0 fs-5' %>
