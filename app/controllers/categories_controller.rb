@@ -5,7 +5,6 @@ class CategoriesController < ApplicationController
   def index
     @user = current_user
     @categories = @user.categories
-
   end
 
   def show
@@ -16,7 +15,6 @@ class CategoriesController < ApplicationController
   # GET /foods/new
   def new
     @category = Category.new
-
   end
 
   # POST /foods or /foods.json

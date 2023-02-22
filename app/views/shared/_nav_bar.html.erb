@@ -1,7 +1,13 @@
 <div class="d-flex bg-primary align-items-center justify-content-between w-100 p-3">
+  <% if  params[:id].present? %>
+    <%= link_to categories_path do %>
+      <i class="fa-solid fa-arrow-left text-white"></i>
+    <%end %>
+  <%else%>
     <%= link_to :back do %>
       <i class="fa-solid fa-arrow-left text-white"></i>
     <%end %>
+    <%end%>
     <% if params[:controller] == 'transacctions'%>
       <h2 class="text-white ms-4">transaction</h2>
     <% else%>

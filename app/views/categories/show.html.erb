@@ -1,5 +1,6 @@
 <%= render "shared/nav_bar"%>
 <%= render "shared/messages"%>
+<% p  current_page?(action: 'show')%>
 <div class="d-flex justify-content-between m-1 p-1">
   <p class= "fs-5"><%=@category.name%> category expenses:</p>
   <p class= "fs-5"><%= number_to_currency(@transacctions.sum(:amount))%></p>
