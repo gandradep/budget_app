@@ -8,6 +8,11 @@ class CategoriesController < ApplicationController
 
   end
 
+  def show
+    @category = Category.find(params[:id])
+    p @category
+  end
+
   # GET /foods/new
   def new
     @category = Category.new
