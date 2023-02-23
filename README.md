@@ -80,7 +80,7 @@ In these apps we implement the devise gem to authenticate the user and you can h
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- Coming soon
+- This app was deploy on render, here is the [link](https://budget-app-bdu6.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
