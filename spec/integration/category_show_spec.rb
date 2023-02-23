@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Category', type: :system do
-  describe 'index' do
+  describe 'show' do
     before(:example) do
       @user = User.create(
         name: 'Gabriel',
@@ -27,26 +27,24 @@ RSpec.describe 'Category', type: :system do
         category_ids: @cat1.id
       )
       sign_in @user
-      visit categories_path
+      visit category_path(@cat1)
     end
 
     it 'renders category' do
       expect(page).to have_content(@cat1.name)
     end
     it 'renders total amount of transactions' do
-      expect(page).to have_content(@tran1.amount + @tran2.amount)
+      expect(page).to have_content(@cat1.transacctions.sum(:amount))
+    end
+    it 'You can find all transacctions name and amount' do
+      expect(page).to have_content(@tran1.name)
+      expect(page).to have_content(@tran2.name)
+      expect(page).to have_content(@tran1.amount)
+      expect(page).to have_content(@tran2.amount)
     end
     it 'click category shows category page' do
-      click_link @cat1.name
-      expect(page).to have_current_path(category_path(@cat1))
-    end
-    it 'click category shows category page' do
-      click_link 'Add category'
-      expect(page).to have_current_path(new_category_path)
-    end
-    it 'click sign out goes root' do
-      click_button 'Log out'
-      expect(page).to have_current_path(root_path)
+      click_link 'Add transaction'
+      expect(page).to have_current_path(new_category_transacction_path(@cat1))
     end
   end
 end
