@@ -9,7 +9,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @transacctions = @category.transacctions
+    trans = @category.transacctions
+    @transacctions = trans.order(created_at: :desc)
   end
 
   # GET /foods/new

@@ -1,4 +1,4 @@
-<div class="d-flex bg-primary align-items-center justify-content-between w-100 p-3">
+<div class="d-flex bg-blue align-items-center justify-content-between w-100 p-3">
   <% if  params[:id].present? %>
     <%= link_to categories_path do %>
       <i class="fa-solid fa-arrow-left text-white"></i>
@@ -8,10 +8,11 @@
       <i class="fa-solid fa-arrow-left text-white"></i>
     <%end %>
     <%end%>
-    <% if params[:controller] == 'transacctions'%>
-      <h2 class="text-white ms-4">transaction</h2>
+    <%p params%>
+    <% if params[:action] == 'show'%>
+      <h2 class="text-white ms-4">transactions</h2>
     <% else%>
     <h2 class="text-white ms-4"><%= params[:controller]%></h2>
     <%end%>
-    <%= button_to "Log out", destroy_user_session_path, class: "btn btn-primary", method: :delete, data: { turbo: false } %>
+    <%= button_to "Log out", destroy_user_session_path, class: "btn bg-blue login text-white", method: :delete, data: { turbo: false } %>
   </div>
