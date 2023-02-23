@@ -14,8 +14,6 @@ class TransacctionsController < ApplicationController
     @transaction.author = @author
     @transaction.category_ids = params[:transacction][:category_ids]
 
-
-
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to categories_url, notice: 'Transaction was successfully created.' }
