@@ -1,6 +1,6 @@
 class TransacctionsController < ApplicationController
   before_action :set_transaction, only: %i[show edit update destroy]
-   # GET /transacction/new
+  # GET /transacction/new
   def new
     @transacction = Transacction.new
 
