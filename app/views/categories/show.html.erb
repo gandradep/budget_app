@@ -1,0 +1,23 @@
+<div class="min-vh-100 d-flex flex-column justify-content-between bg-lightgray">
+  <div>
+    <%= render "shared/nav_bar"%>
+    <%= render "shared/messages"%>
+    <div class="d-flex justify-content-between p-1 bg-white mb-4">
+      <p class= "text-black-50"><%=@category.name%> category expenses:</p>
+      <p class= "text-dark fbold"><%= number_to_currency(@transacctions.sum(:amount))%></p>
+    </div>
+
+    <% @transacctions.each do |item|%>
+        <div class="d-flex justify-content-between m-2 p-2 bg-white">
+          <div>
+            <p class= "text-black-50 m-0"><%= item.name%></p>
+            <p class= "text-black-50 m-0 mt-3 fsize80"><%= item.created_at.strftime("%d %b %y")%></p>
+          </div>
+          <p class= "text-center text-dark fbold"><%= number_to_currency(item.amount)%></p>
+        </div>
+    <%end%>
+  </div>
+  <%= link_to new_category_transacction_path(@category), class:'btn bg-green green w-100 rounded-0 d-flex justify-content-center' do %>
+    <p class="text-white border my-2 w-100 p-3">Add transaction</p>
+  <%end%>
+</div>

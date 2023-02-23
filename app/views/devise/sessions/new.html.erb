@@ -1,0 +1,30 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "d-flex flex-column vh-100 align-items-center gap-5 w-100"}) do |f| %>
+  <div class="d-flex bg-blue align-items-center justify-content-between w-100 p-3">
+    <%= link_to :back do %>
+      <i class="fa-solid fa-arrow-left text-white"></i>
+    <%end %>
+    <h2 class="text-white ms-4">Log in</h2>
+    <div class="">
+      <%= f.submit "Next", class: 'w-100 p-3 bg-blue login rounded-0 text-white border-0' %>
+  </div>
+  </div>
+  <%= render "shared/messages"%>
+  <div class="w-100">
+    <%= f.email_field :email, placeholder: 'Email', autofocus: true, autocomplete: "email", class: 'w-100 p-3' %>
+    <%= f.password_field :password, placeholder: 'Password', autocomplete: "current-password", class: 'w-100 p-3' %>
+    <% if devise_mapping.rememberable? %>
+    <div class="m-3">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+  </div>
+
+
+  <div class="w-100 p-3">
+    <%= render "devise/shared/links"%>
+  </div>
+
+<% end %>
+
+

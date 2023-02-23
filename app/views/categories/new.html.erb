@@ -1,0 +1,24 @@
+<div>
+<%= form_with model: @category, url: categories_path do |f|%>
+
+<div class="d-flex bg-blue align-items-center justify-content-between w-100 p-3">
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left text-white"></i>
+  <%end %>
+  <h2 class="text-white ms-4">Add category</h2>
+  <div class="">
+    <%= f.submit "Next", class: 'w-100 p-3 bg-blue login rounded-0 text-white border-0' %>
+  </div>
+</div>
+<%= render "shared/messages"%>
+<div class="mt-3">
+  <%= f.text_field :name, placeholder: 'Name', class: 'form-control rounded-0 p-3' %>
+  <%= f.text_field :icon_url, placeholder: 'Icon url',class: 'form-control rounded-0 p-3' %>
+</div>
+
+<%end%>
+<% if flash[:error] %>
+    <div><%= flash[:error] %></div>
+<% end %>
+</div>
+</div>

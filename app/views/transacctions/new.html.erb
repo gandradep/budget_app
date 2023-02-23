@@ -1,0 +1,33 @@
+<div class="min-vh-100 bg-lightgray">
+  <%= form_with model: @transacction, url: category_transacctions_path do |f|%>
+    <div class="d-flex bg-blue align-items-center justify-content-between w-100 p-3">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-arrow-left text-white"></i>
+      <%end %>
+      <h2 class="text-white ms-4">Add transaction</h2>
+      <div class="">
+        <%= f.submit "Next", class: 'w-100 p-3 bg-blue login rounded-0 text-white border-0' %>
+      </div>
+    </div>
+    <%= render "shared/messages"%>
+    <div class="mt-3">
+      <%= f.text_field :name, placeholder: 'Name', class: 'form-control rounded-0 p-3' %>
+      <%= f.text_field :amount, placeholder: 'Amount', class: 'form-control rounded-0 p-3' %>
+    </div>
+    <div class="m-3" >
+      <p class="m-0 text-black-50">Select category/categories</p>
+      <% Category.where(author_id: current_user.id).each do |item|%>
+      <%p params[:category_id].to_i%>
+        <% if item.id == params[:category_id].to_i%>
+          <%= check_box_tag "transacction[category_ids][]", item.id, true%>
+        <%else%>
+          <%= check_box_tag "transacction[category_ids][]", item.id%>
+        <%end%>
+        <%= item.name%><br>
+      <%end%>
+    </div>
+  <%end%>
+  <% if flash[:error] %>
+      <div><%= flash[:error] %></div>
+  <% end %>
+</div>

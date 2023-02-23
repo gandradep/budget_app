@@ -1,0 +1,19 @@
+<div class="min-vh-100 d-flex flex-column justify-content-between bg-lightgray">
+  <div>
+    <%= render "shared/nav_bar"%>
+    <%= render "shared/messages"%>
+    <% @categories.each do |item|%>
+      <%= link_to category_path(item), class: 'text-decoration-none  ' do%>
+        <div class="row align-items-center m-1 my-2 p-1 bg-white">
+          <%= image_tag(item.icon_url, class: 'img-fluid col-4')%>
+          <p class= "col-4 text-center text-black-50 "><%= item.name%></p>
+          <p class= "col-4 text-center text-dark fbold"><%=number_to_currency(item.transacctions.sum(:amount))%></p>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+
+  <%= link_to new_category_path, class:'btn bg-green green w-100 rounded-0 d-flex justify-content-center' do %>
+    <p class="text-white border my-2 w-100 p-3">Add category</p>
+  <%end%>
+</div>

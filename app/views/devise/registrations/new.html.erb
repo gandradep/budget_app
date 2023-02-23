@@ -1,0 +1,23 @@
+<%= form_for(resource, html: {class: "d-flex flex-column vh-100 align-items-center gap-5 w-100"}, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="d-flex bg-blue align-items-center justify-content-between w-100 p-3">
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left text-white"></i>
+  <%end %>
+  <h2 class="text-white ms-4">Register</h2>
+  <div class="">
+    <%= f.submit "Next", class: 'w-100 p-3 bg-blue login rounded-0 text-white border-0' %>
+  </div>
+</div>
+
+  <div class="w-100">
+      <%= f.text_field :name, autofocus: true, placeholder: "Full name", class: 'w-100 p-3' %>
+      <%= f.email_field :email, placeholder: "Email",  autocomplete: "email", class: 'w-100 p-3' %>
+      <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password", class: 'w-100 p-3' %>
+      <%= f.password_field :password_confirmation, placeholder: "Password confirmation", autocomplete: "new-password", class: 'w-100 p-3' %>
+    </div>
+
+<% end %>
+
+
