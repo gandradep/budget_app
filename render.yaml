@@ -7,6 +7,7 @@ databases:
 services:
   - type: web
     name: budget_app_render
+    plan: free
     env: ruby
     buildCommand: "./render-build.sh"
     startCommand: "bundle exec rails s"
